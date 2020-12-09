@@ -2,19 +2,20 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { AppStateType } from '../../redux/redux-store'
 import Cart from './cart'
-import { clearCart, decreaseProductCount, increaseProductCount } from '../../redux/cart-reducer'
-import { cart, product } from '../../types/type'
+import { clearCart, createNewOrder, decreaseProductCount, increaseProductCount } from '../../redux/cart-reducer'
+import { cart, product, userData } from '../../types/type'
 
 type CartContainerType = {
   cartState: cart
   clearCart: () => void
   decreaseProductCount: (productId: string) => void
   increaseProductCount: (product: product) => void
+  createNewOrder: (cart: cart, user: userData) => void
 }
 
-const CartContainer = ({cartState, clearCart, decreaseProductCount, increaseProductCount}: CartContainerType) => {
+const CartContainer = ({cartState, createNewOrder, clearCart, decreaseProductCount, increaseProductCount}: CartContainerType) => {
   return (
-    <Cart cartState={cartState} clearCart={clearCart} decreaseProductCount={(productId: string) => decreaseProductCount(productId)} increaseProductCount={(product:product) => increaseProductCount(product)} />
+    <Cart createNewOrder={(cart: cart, user: userData) => createNewOrder(cart, user)} cartState={cartState} clearCart={clearCart} decreaseProductCount={(productId: string) => decreaseProductCount(productId)} increaseProductCount={(product:product) => increaseProductCount(product)} />
   )
 }
 
@@ -31,6 +32,9 @@ const mapDispatchToProps = (dispatch: any) => ({
   },
   clearCart() {
     dispatch(clearCart())
+  },
+  createNewOrder(cart: cart, user: userData) {
+    dispatch(createNewOrder(cart, user))
   }
 })
 

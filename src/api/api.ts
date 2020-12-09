@@ -1,7 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
-import { product } from '../types/type'
+import { order, product } from '../types/type'
 
 const firebaseConfig = {
   apiKey: "AIzaSyDH84c5IozQZ0tLjthUL7-D7WPHIIgGnT4",
@@ -23,6 +23,7 @@ if (!firebase.apps.length) {
 const firestore = firebase.firestore()
 
 const productsRef = firestore.collection('products')
+const ordersRef = firestore.collection('orders')
 
 const API = {
   async getProducts() {
@@ -30,6 +31,9 @@ const API = {
     const data:product[] = []
     snapshot.forEach((doc: any) => data.push({...doc.data(), _id: doc.id}))
     return data
+  },
+  createNewOrder(order: order) {
+    ordersRef.add(order)
   }
 }
 

@@ -17,3 +17,15 @@ export type cartItem = {
   product: product
   count: number
 }
+
+export type userData = {
+  name: string
+  surName: string
+  adress: string
+  phone: string
+}
+
+export type order = {
+  cart: cart
+  user: userData
+}

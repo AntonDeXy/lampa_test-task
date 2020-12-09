@@ -1,4 +1,5 @@
-import { cart, product } from '../types/type'
+import API from '../api/api'
+import { cart, product, userData } from '../types/type'
 
 const SET_CART = 'SET_CART'
 const INCREASE_PRODUCT_COUNT = 'INCREASE_PRODUCT_COUNT'
@@ -108,11 +109,8 @@ type clearCartType = {
 
 export const clearCart = ():clearCartType => ({type: CLEAR_CART})
 
-export type userData = {
-  name: string
-  surName: string
-  adress: string
-  phone: string
+export const createNewOrder = (cart: cart, user: userData) => async (dispatch: any) => {
+  await API.createNewOrder({cart, user})
 }
 
 export const saveDataToLocalStorage = (cart: cart, user?:userData) => {

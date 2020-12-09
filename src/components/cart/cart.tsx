@@ -1,5 +1,5 @@
 import React from 'react'
-import { cart, product } from '../../types/type'
+import { cart, product, userData } from '../../types/type'
 import { CartStyled } from './cart-styled'
 import CartItemsList from './cart-items-list'
 import CartOrderForm from './cart-order-form'
@@ -9,12 +9,13 @@ type CartType = {
   decreaseProductCount: (productId: string) => void
   increaseProductCount: (product: product) => void
   clearCart: () => void
+  createNewOrder: (cart: cart, user: userData) => void
 }
 
-const Cart = ({cartState, clearCart, decreaseProductCount, increaseProductCount}: CartType) => {
+const Cart = ({cartState, clearCart, createNewOrder, decreaseProductCount, increaseProductCount}: CartType) => {
   const onFormSubmit = (e: any) => {
     clearCart()
-    console.log(e)
+    createNewOrder(cartState, e)
   }
   
   return (
