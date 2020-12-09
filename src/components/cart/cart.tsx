@@ -3,20 +3,20 @@ import { cart, product } from '../../types/type'
 import { CartStyled } from './cart-styled'
 import CartItemsList from './cart-items-list'
 import CartOrderForm from './cart-order-form'
-import { userData } from '../../redux/cart-reducer'
 
 type CartType = {
   cartState: cart
   decreaseProductCount: (productId: string) => void
   increaseProductCount: (product: product) => void
-  saveDataToLocalStorage: (cart: cart, user: userData) => void
+  clearCart: () => void
 }
 
-const Cart = ({cartState, decreaseProductCount, saveDataToLocalStorage, increaseProductCount}: CartType) => {
-  const onFormSubmit = (data: any) => {
-    saveDataToLocalStorage(cartState, data)
+const Cart = ({cartState, clearCart, decreaseProductCount, increaseProductCount}: CartType) => {
+  const onFormSubmit = (e: any) => {
+    clearCart()
+    console.log(e)
   }
-
+  
   return (
     <CartStyled>
       <CartItemsList 
@@ -26,7 +26,7 @@ const Cart = ({cartState, decreaseProductCount, saveDataToLocalStorage, increase
         items={cartState.items} />
       {
         cartState.items.length > 0 && (
-          <CartOrderForm
+          <CartOrderForm 
             onSubmit={onFormSubmit}
           />
         )

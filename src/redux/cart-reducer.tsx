@@ -3,6 +3,7 @@ import { cart, product } from '../types/type'
 const SET_CART = 'SET_CART'
 const INCREASE_PRODUCT_COUNT = 'INCREASE_PRODUCT_COUNT'
 const DECREASE_PRODUCT_COUNT = 'DECREASE_PRODUCT_COUNT'
+const CLEAR_CART = 'CLEAR_CART'
 
 const initialState: cart = {
   _id: '1',
@@ -60,6 +61,9 @@ const cartReducer = (state = initialState, action: any): InitialStateType => {
       saveDataToLocalStorage({...state, items: newItems, ...cartData})
       return {...state, items: newItems, ...cartData}
     }
+    case CLEAR_CART: {
+      return {...state, totalSum: 0, totalProductsCount: 0, items: []}
+    }
     default: {
       return state
     }
@@ -97,6 +101,12 @@ type changeCartDataType = {
 }
 
 export const changeCartData = (cart: cart):changeCartDataType => ({type: SET_CART, cart})
+
+type clearCartType = {
+  type: typeof CLEAR_CART
+}
+
+export const clearCart = ():clearCartType => ({type: CLEAR_CART})
 
 export type userData = {
   name: string

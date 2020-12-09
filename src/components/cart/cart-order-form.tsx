@@ -1,11 +1,11 @@
 import React from 'react'
 import { CartOrderFormStyled } from './cart-styled'
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, InjectedFormProps, reset } from 'redux-form'
 
-const CartOrderForm = ({handleSubmit}: any) => {
+const CartOrderForm = (props: InjectedFormProps) => {
   return (
     <CartOrderFormStyled>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={props.handleSubmit}>
         <div>
           <Field required name="name" component="input" placeholder='name' type="text" />
         </div>
@@ -24,6 +24,9 @@ const CartOrderForm = ({handleSubmit}: any) => {
   )
 }
 
+const afterSubmit = (result: any, dispatch: any) => dispatch(reset('make-order'))
+
 export default reduxForm({
-  form: 'make-order'
+  form: 'make-order',
+  onSubmitSuccess: afterSubmit,
 })(CartOrderForm)
