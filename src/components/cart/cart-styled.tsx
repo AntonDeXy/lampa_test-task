@@ -2,10 +2,10 @@ import styled from 'styled-components'
 
 export const CartStyled = styled.div`
   display: grid;
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     grid-template-columns: 3.5fr 2fr;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     grid-template-columns: 100%;
   }
   width: 90%;
@@ -25,7 +25,7 @@ export const CartItemCardStyled = styled.div`
     }
   }
   @media (min-width: 576px) {
-    grid-template-columns: 20% 1fr auto;
+    grid-template-columns: 40% 1fr auto;
     .quantity {
       grid-template-columns: 1fr auto 1fr;
     }
@@ -33,11 +33,10 @@ export const CartItemCardStyled = styled.div`
   gap: 10px;
   box-shadow: 0px 0px 5px #949494;
   background-color: white;
-  .img {
-    img {
-      max-width: 100%;
-      max-height: 100%;
-    }
+  img {
+    height: 25vh;
+    width: 100%;
+    object-fit: cover
   }
   .info {
     display: grid;

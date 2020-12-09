@@ -13,13 +13,13 @@ type CartItemCardType = {
 const CartItemCard = ({item, decreaseProductCount, increaseProductCount}: CartItemCardType) => {
   return (
     <CartItemCardStyled>
-      <div className="img">
-        <img src={item.product.imgUrl} alt={item.product.title}/>
-      </div>
+      <img src={item.product.imgUrl} alt={item.product.title}/>
       <div className="info">
         <div className='title'><h2>{item.product.title}</h2></div>
         <div className='price'><span>{item.product.price}&#36;</span></div>
-        <div className='desc' ><span>{item.product.description}</span></div>
+        <div className='desc'>
+          <span>{item.product.description.length > 100 ? (item.product.description.split('', 100).join('') + '...') : item.product.description }</span>
+        </div>
       </div>
       <div className="quantity">
         <div onClick={decreaseProductCount} className="button minus">

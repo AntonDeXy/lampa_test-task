@@ -9,7 +9,7 @@ export const HeaderStyled = styled.header`
     align-items: center;
     justify-self: center;
     display: grid;
-    width: 90%;
+    width: 95%;
     justify-content: space-between;
     grid-auto-flow: column;
     a {

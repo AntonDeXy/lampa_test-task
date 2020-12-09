@@ -17,8 +17,10 @@ const CartItemsList = ({items, cartPrice, increaseProductCount, decreaseProductC
         items.map(item => {
           return (
             <CartItemCard 
-            decreaseProductCount={() => decreaseProductCount(item.product._id)}
-            increaseProductCount={() => increaseProductCount(item.product)} item={item} />
+              key={item.product._id}
+              decreaseProductCount={() => decreaseProductCount(item.product._id)}
+              increaseProductCount={() => increaseProductCount(item.product)}
+              item={item} />
           )
         })
       }

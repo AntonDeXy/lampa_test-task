@@ -2,20 +2,15 @@ import styled from 'styled-components'
 
 const ProductCardStyled = styled.div`
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: 30vh 1fr;
   background-color: white;
   box-shadow: 0px 0px 5px rgb(148, 148, 148);
   align-content: flex-end;
   overflow: hidden;
-  .img {
-    display: grid;
-    overflow: hidden;
-    /* background-color: #c4c4c4; */
-    img {
-      width: 100%;
-      max-height: 100%;
-      object-fit: cover;
-    }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover
   }
   .info {
     display: grid;

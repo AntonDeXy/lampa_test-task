@@ -10,13 +10,11 @@ type ProductCardType = {
 const ProductCard = ({product, addProductToCart}: ProductCardType) => {
   return (
     <ProductCardStyled>
-      <div className="img">
-        <img src={product.imgUrl} alt={product.title}/>
-      </div>
+      <img src={product.imgUrl} alt={product.title}/>
       <div className="info">
         <h2>{product.title}</h2>
         <div className='description'>
-          <span>{product.description.length > 50 ? (product.description.split('', 100).join('') + '...') : product.description }</span>
+          <span>{product.description.length > 100 ? (product.description.split('', 100).join('') + '...') : product.description }</span>
         </div>
         <div className='price' >
           <span>{product.price}&#36;</span>
