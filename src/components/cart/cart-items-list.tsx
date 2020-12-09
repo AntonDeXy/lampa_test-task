@@ -1,7 +1,7 @@
 import React from 'react'
 import { cartItem, product } from '../../types/type'
 import { CartItemsListStyled } from './cart-styled'
-import CartItemCard from './cart-item-card';
+import CartItem from './cart-item'
 
 type CartItemsListType = {
   cartPrice: Number
@@ -16,7 +16,7 @@ const CartItemsList = ({items, cartPrice, increaseProductCount, decreaseProductC
       {
         items.map(item => {
           return (
-            <CartItemCard 
+            <CartItem 
               key={item.product._id}
               decreaseProductCount={() => decreaseProductCount(item.product._id)}
               increaseProductCount={() => increaseProductCount(item.product)}

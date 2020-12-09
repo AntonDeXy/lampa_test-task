@@ -1,18 +1,18 @@
 import React from 'react'
 import { cartItem } from '../../types/type'
-import { CartItemCardStyled } from './cart-styled'
+import { CartItemStyled } from './cart-styled'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
 
-type CartItemCardType = {
+type CartItemType = {
   item: cartItem
   decreaseProductCount: () => void
   increaseProductCount: () => void
 }
 
-const CartItemCard = ({item, decreaseProductCount, increaseProductCount}: CartItemCardType) => {
+const CartItem = ({item, decreaseProductCount, increaseProductCount}: CartItemType) => {
   return (
-    <CartItemCardStyled>
+    <CartItemStyled>
       <img src={item.product.imgUrl} alt={item.product.title}/>
       <div className="info">
         <div className='title'><h2>{item.product.title}</h2></div>
@@ -32,8 +32,8 @@ const CartItemCard = ({item, decreaseProductCount, increaseProductCount}: CartIt
           <FontAwesomeIcon color='#000' icon={faPlus} />
         </div>
       </div>
-    </CartItemCardStyled>
+    </CartItemStyled>
   )
 }
 
-export default CartItemCard
+export default CartItem

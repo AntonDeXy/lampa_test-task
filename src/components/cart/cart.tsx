@@ -1,9 +1,9 @@
 import React from 'react'
 import { cart, product } from '../../types/type'
 import { CartStyled } from './cart-styled'
-import CartItemsList from './cart-items-list';
-import CartOrderForm from './cart-order-form';
-import { userData } from '../../redux/cart-reducer';
+import CartItemsList from './cart-items-list'
+import CartOrderForm from './cart-order-form'
+import { userData } from '../../redux/cart-reducer'
 
 type CartType = {
   cartState: cart

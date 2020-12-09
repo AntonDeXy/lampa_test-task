@@ -14,7 +14,7 @@ export const CartStyled = styled.div`
   gap: 1.5em;
 `
 
-export const CartItemCardStyled = styled.div`
+export const CartItemStyled = styled.div`
   display: grid;
   @media (max-width: 576px) {
     grid-template-columns: 1fr;
