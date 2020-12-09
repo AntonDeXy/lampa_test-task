@@ -101,6 +101,8 @@ export const CartOrderFormStyled = styled.div`
   box-shadow: 0px 0px 5px #949494;
   background-color: white;
   padding: 1em;
+  align-content: baseline;
+  align-self: baseline;
   form {
     width: 100%;
     display: grid;

@@ -6,7 +6,6 @@ const CartOrderForm = ({handleSubmit}: any) => {
   return (
     <CartOrderFormStyled>
       <form onSubmit={handleSubmit}>
-      {/* <form onSubmit={handleSubmit}> */}
         <div>
           <Field required name="name" component="input" placeholder='name' type="text" />
         </div>

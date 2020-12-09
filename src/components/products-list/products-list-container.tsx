@@ -5,6 +5,7 @@ import { AppStateType } from '../../redux/redux-store'
 import { product } from '../../types/type'
 import { getProducts } from '../../redux/products-reducer'
 import { increaseProductCount } from '../../redux/cart-reducer'
+import { ProductsListStyled } from './products-list-styled'
 
 type ProductsListContainerType = {
   productsState: product[]
@@ -24,7 +25,9 @@ const ProductsListContainer = ({productsState, getProducts, addProductToCart}: P
   }, [getProducts])
 
   return (
-    <ProductsList addProductToCart={addProductToCart} products={products} />
+    <ProductsListStyled>
+      <ProductsList addProductToCart={addProductToCart} products={products} />
+    </ProductsListStyled>
   )
 }
 
