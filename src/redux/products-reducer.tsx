@@ -1,4 +1,4 @@
-import API from "../components/api/api"
+import API from "../api/api"
 import { product } from "../types/type"
 
 const SET_PRODUCTS = 'SET_PRODUCTS'
@@ -28,23 +28,6 @@ type setProductsType = {
 const setProducts = (products: product[]):setProductsType  => ({type: SET_PRODUCTS, products})
 
 export const getProducts = () => async (dispath: any) => {
-  // const data = [
-  //   {
-  //     _id: '1',
-  //     title: 'title1',
-  //     description: 'description1',
-  //     price: 9.99,
-  //     imgUrl: 'https://media.dominos.ua/news/news_image/2020/04/08/new-pizzas_news.jpg'
-  //   },
-  //   {
-  //     _id: '2',
-  //     title: 'title2',
-  //     description: 'description2',
-  //     price: 19.99,
-  //     imgUrl: 'https://media.dominos.ua/news/news_image/2020/04/08/new-pizzas_news.jpg'
-  //   },
-  // ]
-  // dispath(setProducts(data))
   dispath(setProducts(await API.getProducts()))
 }
 
