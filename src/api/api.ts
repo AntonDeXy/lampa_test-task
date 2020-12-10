@@ -2,6 +2,10 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
 import { order, product } from '../types/type'
+import axios from 'axios'
+
+const CONNECT_TO_EXPRESS = 0
+const baseExpressServerUrl = 'http://localhost:5000/'
 
 const firebaseConfig = {
   apiKey: "AIzaSyDH84c5IozQZ0tLjthUL7-D7WPHIIgGnT4",
@@ -37,4 +41,14 @@ const API = {
   }
 }
 
-export default API
+const APIWithExpress = {
+  async getProducts() {
+    const {data} = await axios.get(`${baseExpressServerUrl}products`)
+    return data
+  },
+  createNewOrder(order: order) {
+    ordersRef.add(order)
+  }
+}
+
+export default CONNECT_TO_EXPRESS ? APIWithExpress : API
