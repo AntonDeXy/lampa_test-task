@@ -14,6 +14,7 @@ exports.createOrder = async (req, res) => {
     const newOrder = new OrderSchema({...req.body.order})
     res.status(200).send(await newOrder.save())
   } catch (err) {
+    res.status(500).send('Server error')
     throw err
   }
 }
