@@ -13,7 +13,7 @@ exports.getAllProducts = async (req, res) => {
 exports.createProduct = async (req, res) => {
   try {
     const newProduct = new ProductSchema({...req.body.product})
-    res.send(await newProduct.save()).status(200)
+    res.send(await newProduct.save()).status(201)
   } catch (err) {
     res.send('Server error').status(500)
     throw err

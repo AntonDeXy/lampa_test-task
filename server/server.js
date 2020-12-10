@@ -25,6 +25,11 @@ app.get('/orders', ordersController.getAllOrders)
 
 app.post('/orders/create', ordersController.createOrder)
 
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }).then(
+  () => {
+    console.log('mongoDB connected')
+    app.listen(5000, () => console.log('server started'))
+  },
+  err => {console.log(err)}
+)
 
-app.listen(5000, () => console.log('server started'))

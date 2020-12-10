@@ -13,7 +13,7 @@ exports.getAllOrders = async (req, res) => {
 exports.createOrder = async (req, res) => {
   try {
     const newOrder = new OrderSchema({...req.body.order})
-    res.send(await newOrder.save()).status(200)
+    res.send(await newOrder.save()).status(201)
   } catch (err) {
     res.send('Server error').status(500)
     throw err
