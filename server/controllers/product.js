@@ -3,8 +3,9 @@ const ProductSchema = require('../models/product-schema')
 exports.getAllProducts = async (req, res) => {
   try {
     const data = await ProductSchema.find({})
-    res.status(200).send(data)
+    res.send(data).status(200)
   } catch (err) {
+    res.send('Server error').status(500)
     throw err
   }
 }
@@ -12,8 +13,9 @@ exports.getAllProducts = async (req, res) => {
 exports.createProduct = async (req, res) => {
   try {
     const newProduct = new ProductSchema({...req.body.product})
-    res.status(200).send(await newProduct.save()) 
+    res.send(await newProduct.save()).status(200)
   } catch (err) {
+    res.send('Server error').status(500)
     throw err
   }
 }

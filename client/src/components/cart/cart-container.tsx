@@ -10,12 +10,12 @@ type CartContainerType = {
   clearCart: () => void
   decreaseProductCount: (productId: string) => void
   increaseProductCount: (product: product) => void
-  createNewOrder: (cart: cart, user: userData) => void
+  createNewOrder: (cart: cart, user: userData, cb: () => void, failed: () => void) => void
 }
 
 const CartContainer = ({cartState, createNewOrder, clearCart, decreaseProductCount, increaseProductCount}: CartContainerType) => {
   return (
-    <Cart createNewOrder={(cart: cart, user: userData) => createNewOrder(cart, user)} cartState={cartState} clearCart={clearCart} decreaseProductCount={(productId: string) => decreaseProductCount(productId)} increaseProductCount={(product:product) => increaseProductCount(product)} />
+    <Cart createNewOrder={(cart: cart, user: userData, cb: () => void, failed: () => void) => createNewOrder(cart, user, cb, failed)} cartState={cartState} clearCart={clearCart} decreaseProductCount={(productId: string) => decreaseProductCount(productId)} increaseProductCount={(product:product) => increaseProductCount(product)} />
   )
 }
 
@@ -33,8 +33,8 @@ const mapDispatchToProps = (dispatch: any) => ({
   clearCart() {
     dispatch(clearCart())
   },
-  createNewOrder(cart: cart, user: userData) {
-    dispatch(createNewOrder(cart, user))
+  createNewOrder(cart: cart, user: userData, cb: () => void, failed: () => void) {
+    dispatch(createNewOrder(cart, user, cb, failed))
   }
 })
 

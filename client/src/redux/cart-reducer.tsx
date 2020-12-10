@@ -109,8 +109,9 @@ type clearCartType = {
 
 export const clearCart = ():clearCartType => ({type: CLEAR_CART})
 
-export const createNewOrder = (cart: cart, user: userData) => async (dispatch: any) => {
-  await API.createNewOrder({cart, user})
+export const createNewOrder = (cart: cart, user: userData, cb: () => void, failed: () => void) => async () => {
+  const isSuccess = await API.createNewOrder({cart, user})
+  isSuccess ? cb() : failed()
 }
 
 export const saveDataToLocalStorage = (cart: cart, user?:userData) => {

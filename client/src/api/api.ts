@@ -4,7 +4,7 @@ import 'firebase/auth'
 import { order, product } from '../types/type'
 import axios from 'axios'
 
-const { REACT_APP_EXPRESS_SERVER } = process.env;
+const { REACT_APP_EXPRESS_SERVER } = process.env
 
 const baseExpressServerUrl = 'http://localhost:5000/'
 
@@ -33,8 +33,8 @@ const ordersRef = firestore.collection('orders')
 const API = {
   async getProducts() {
     const snapshot = await productsRef.get()
-    const data:product[] = []
-    snapshot.forEach((doc: any) => data.push({...doc.data(), _id: doc.id}))
+    const data: product[] = []
+    snapshot.forEach((doc: any) => data.push({ ...doc.data(), _id: doc.id }))
     return data
   },
   createNewOrder(order: order) {
@@ -44,11 +44,20 @@ const API = {
 
 const APIWithExpress = {
   async getProducts() {
-    const {data} = await axios.get(`${baseExpressServerUrl}products`)
+    const { data } = await axios.get(`${baseExpressServerUrl}products`)
     return data
   },
-  createNewOrder(order: order) {
-    ordersRef.add(order)
+  async createNewOrder(order: order) {
+    try {
+      const res = await axios.post(`${baseExpressServerUrl}orders/create`, { order }, {timeout: 5000})
+      console.log(res.status)
+      if (res.status === 200) {
+        return true
+      }
+      return false
+    } catch (err) {
+      return false
+    }
   }
 }
 

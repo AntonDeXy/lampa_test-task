@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
+const morgan = require('morgan')
 
 const productsController = require('./controllers/product') 
 const ordersController = require('./controllers/order') 
@@ -10,6 +11,8 @@ const password = 'admintest'
 const mongoURI = `mongodb+srv://${username}:${password}@cluster0.fxjql.mongodb.net/test-app?retryWrites=true&w=majority`
 
 const app = express()
+
+app.use(morgan('tiny'))
 
 app.use(express.json())
 app.use(cors('http://localhost:3000/'))

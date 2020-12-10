@@ -3,8 +3,9 @@ const OrderSchema = require('../models/order-schema')
 exports.getAllOrders = async (req, res) => {
   try {
     const data = await OrderSchema.find({})
-    res.status(200).send(data)
+    res.send(data).status(200)
   } catch (err) {
+    res.send('Server error').status(500)
     throw err
   }
 }
@@ -12,9 +13,9 @@ exports.getAllOrders = async (req, res) => {
 exports.createOrder = async (req, res) => {
   try {
     const newOrder = new OrderSchema({...req.body.order})
-    res.status(200).send(await newOrder.save())
+    res.send(await newOrder.save()).status(200)
   } catch (err) {
-    res.status(500).send('Server error')
+    res.send('Server error').status(500)
     throw err
   }
 }
