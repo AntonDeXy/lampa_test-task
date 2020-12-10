@@ -30,6 +30,7 @@
     "typescript": "^4.1.2"
   },
   "scripts": {
+    "start:express": "REACT_APP_EXPRESS_SERVER=true react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
