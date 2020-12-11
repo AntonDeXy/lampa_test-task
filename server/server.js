@@ -32,7 +32,7 @@ app.post('/orders/create', ordersController.createOrder)
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }).then(
   () => {
     console.log('mongoDB connected')
-    app.listen(PORT, () => console.log('server started'))
+    app.listen(PORT, '0.0.0.0',() => console.log('server started'))
   },
   err => {console.log(err)}
 )
