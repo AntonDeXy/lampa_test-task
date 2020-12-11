@@ -4,9 +4,9 @@ import 'firebase/auth'
 import { order, product } from '../types/type'
 import axios from 'axios'
 
-const { REACT_APP_EXPRESS_SERVER } = process.env
+const { REACT_APP_EXPRESS_SERVER, REACT_APP_BASE_API_URL } = process.env
 
-const baseExpressServerUrl = 'http://localhost:5000/'
+const baseExpressServerUrl = REACT_APP_BASE_API_URL || 'http://localhost:5000/'
 
 const firebaseConfig = {
   apiKey: "AIzaSyDH84c5IozQZ0tLjthUL7-D7WPHIIgGnT4",

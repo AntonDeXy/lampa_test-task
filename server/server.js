@@ -6,6 +6,8 @@ const morgan = require('morgan')
 const productsController = require('./controllers/product') 
 const ordersController = require('./controllers/order') 
 
+const PORT = process.env.PORT || 5000
+
 const username = 'admin'
 const password = 'admintest'
 const mongoURI = `mongodb+srv://${username}:${password}@cluster0.fxjql.mongodb.net/test-app?retryWrites=true&w=majority`
@@ -28,7 +30,7 @@ app.post('/orders/create', ordersController.createOrder)
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }).then(
   () => {
     console.log('mongoDB connected')
-    app.listen(5000, () => console.log('server started'))
+    app.listen(PORT, () => console.log('server started'))
   },
   err => {console.log(err)}
 )
