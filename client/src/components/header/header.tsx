@@ -7,7 +7,7 @@ type HeaderType = {
   getCartDataFromLocalStorage: () => void
 }
 
-const Header = ({cartPrice, getCartDataFromLocalStorage}: HeaderType) => {
+const Header:React.FC<HeaderType> = ({cartPrice, getCartDataFromLocalStorage}) => {
   useEffect(() => {
     getCartDataFromLocalStorage()
   }, [getCartDataFromLocalStorage])

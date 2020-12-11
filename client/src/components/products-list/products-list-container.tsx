@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ProductsList from './products-list'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import { AppStateType } from '../../redux/redux-store'
 import { product } from '../../types/type'
 import { getProducts } from '../../redux/products-reducer'
@@ -13,9 +13,11 @@ type ProductsListContainerType = {
   addProductToCart: (product: product) => void
 }
 
-const ProductsListContainer = ({productsState, getProducts, addProductToCart}: ProductsListContainerType) => {
+const ProductsListContainer: React.FC<ProductsListContainerType> = (
+  { productsState, getProducts, addProductToCart }
+) => {
   const [products, setProducts] = useState(productsState)
-  
+
   useEffect(() => {
     setProducts(productsState)
   }, [productsState])

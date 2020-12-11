@@ -9,7 +9,9 @@ type HeaderContainerType = {
   getCartDataFromLocalStorage: () => void
 }
 
-const HeaderContainer = ({cartPrice, getCartDataFromLocalStorage}: HeaderContainerType) => {
+const HeaderContainer:React.FC<HeaderContainerType> = (
+  {cartPrice, getCartDataFromLocalStorage}
+) => {
   return (
     <Header getCartDataFromLocalStorage={getCartDataFromLocalStorage} cartPrice={cartPrice} />
   )

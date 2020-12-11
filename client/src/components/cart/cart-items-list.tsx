@@ -10,13 +10,15 @@ type CartItemsListType = {
   increaseProductCount: (product: product) => void
 }
 
-const CartItemsList = ({items, cartPrice, increaseProductCount, decreaseProductCount}: CartItemsListType) => {
+const CartItemsList: React.FC<CartItemsListType> = (
+  { items, cartPrice, increaseProductCount, decreaseProductCount }
+) => {
   return (
     <CartItemsListStyled>
       {
         items.map(item => {
           return (
-            <CartItem 
+            <CartItem
               key={item.product._id}
               decreaseProductCount={() => decreaseProductCount(item.product._id)}
               increaseProductCount={() => increaseProductCount(item.product)}

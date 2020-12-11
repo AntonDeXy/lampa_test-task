@@ -7,11 +7,13 @@ type ProductsListType = {
   addProductToCart: (product: product) => void
 }
 
-const ProductsList = ({products, addProductToCart}: ProductsListType) => {
+const ProductsList:React.FC<ProductsListType> = ({products, addProductToCart}) => {
   return (
     <div className='product-list'>
       {products.map(product => {
-        return <ProductCard key={product._id} addProductToCart={() => addProductToCart(product)} product={product} />
+        return <ProductCard 
+          key={product._id} product={product}
+          addProductToCart={() => addProductToCart(product)} />
       })}
     </div>
   )

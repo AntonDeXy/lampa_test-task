@@ -13,23 +13,33 @@ type CartType = {
   createNewOrder: (cart: cart, user: userData, cb: () => void, failed: () => void) => void
 }
 
-const Cart = ({cartState, clearCart, createNewOrder, decreaseProductCount, increaseProductCount}: CartType) => {
+const Cart: React.FC<CartType> = (
+  {
+    cartState, clearCart, createNewOrder,
+    decreaseProductCount, increaseProductCount
+  }
+) => {
   const alert = useAlert()
 
   const onFormSubmit = (user: any) => {
-    createNewOrder(cartState, user, () => clearCart(), () => alert.error('Something went wrong, try again later'))
+    createNewOrder(
+      cartState,
+      user,
+      () => clearCart(),
+      () => alert.error('Something went wrong, try again later')
+    )
   }
-  
+
   return (
     <CartStyled>
-      <CartItemsList 
+      <CartItemsList
         cartPrice={cartState.totalSum}
-        decreaseProductCount={(productId: string) => decreaseProductCount(productId)} 
-        increaseProductCount={(product: product) => increaseProductCount(product)} 
+        decreaseProductCount={(productId: string) => decreaseProductCount(productId)}
+        increaseProductCount={(product: product) => increaseProductCount(product)}
         items={cartState.items} />
       {
         cartState.items.length > 0 && (
-          <CartOrderForm 
+          <CartOrderForm
             onSubmit={onFormSubmit}
           />
         )

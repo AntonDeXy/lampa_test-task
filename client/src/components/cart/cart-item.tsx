@@ -10,15 +10,23 @@ type CartItemType = {
   increaseProductCount: () => void
 }
 
-const CartItem = ({item, decreaseProductCount, increaseProductCount}: CartItemType) => {
+const CartItem: React.FC<CartItemType> = (
+  { item, decreaseProductCount, increaseProductCount }
+) => {
   return (
     <CartItemStyled>
-      <img src={item.product.imgUrl} alt={item.product.title}/>
+      <img src={item.product.imgUrl} alt={item.product.title} />
       <div className="info">
         <div className='title'><h2>{item.product.title}</h2></div>
         <div className='price'><span>{item.product.price}&#36;</span></div>
         <div className='desc'>
-          <span>{item.product.description.length > 100 ? (item.product.description.split('', 100).join('') + '...') : item.product.description }</span>
+          <span>
+            {
+              item.product.description.length > 100
+                ? (item.product.description.split('', 100).join('') + '...')
+                : item.product.description
+            }
+          </span>
         </div>
       </div>
       <div className="quantity">
