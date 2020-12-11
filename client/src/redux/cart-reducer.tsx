@@ -1,10 +1,8 @@
 import API from '../api/api'
 import { cart, product, userData } from '../types/type'
+import { CLEAR_CART, DECREASE_PRODUCT_COUNT, INCREASE_PRODUCT_COUNT, SET_CART } from './types'
 
-const SET_CART = 'SET_CART'
-const INCREASE_PRODUCT_COUNT = 'INCREASE_PRODUCT_COUNT'
-const DECREASE_PRODUCT_COUNT = 'DECREASE_PRODUCT_COUNT'
-const CLEAR_CART = 'CLEAR_CART'
+const { REACT_APP_EXPRESS_SERVER } = process.env
 
 const initialState: cart = {
   _id: '1',
@@ -111,7 +109,11 @@ export const clearCart = ():clearCartType => ({type: CLEAR_CART})
 
 export const createNewOrder = (cart: cart, user: userData, cb: () => void, failed: () => void) => async () => {
   const isSuccess = await API.createNewOrder({cart, user})
-  isSuccess ? cb() : failed()
+  if (REACT_APP_EXPRESS_SERVER) {
+    isSuccess ? cb() : failed()
+  } else {
+    cb()
+  }
 }
 
 export const saveDataToLocalStorage = (cart: cart, user?:userData) => {

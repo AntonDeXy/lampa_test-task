@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const morgan = require('morgan')
+const path = require('path')
 
 const productsController = require('./controllers/product') 
 const ordersController = require('./controllers/order') 
@@ -18,6 +19,7 @@ app.use(morgan('tiny'))
 
 app.use(express.json())
 app.use(cors('http://localhost:3000/'))
+app.use(express.static(path.join(__dirname, '../client/build')))
 
 app.get('/products', productsController.getAllProducts)
 

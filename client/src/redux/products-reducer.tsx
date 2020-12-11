@@ -1,7 +1,6 @@
 import API from "../api/api"
 import { product } from "../types/type"
-
-const SET_PRODUCTS = 'SET_PRODUCTS'
+import { SET_PRODUCTS } from "./types"
 
 const initialState: {products: product[]} = {
   products: []
