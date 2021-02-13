@@ -36,4 +36,3 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }).
   },
   err => {console.log(err)}
 )
-
